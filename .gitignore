@@ -8,5 +8,22 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+.idea
+.out
+*.iml
+
+.classpath
+.project
+nb-configuration.xml
+*.class
+*.jar
+*.ear
+target
+.settings
+nbproject 
+hooks
+info
+
+
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar

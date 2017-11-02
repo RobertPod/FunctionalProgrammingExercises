@@ -1,7 +1,5 @@
 package robert.trening.functionalfrogrammingfxercises.imp;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import robert.trening.functionalfrogrammingfxercises.model.K34TeamScore;
 

@@ -17,7 +17,7 @@ class StreamsExampleTest {
     private K34TeamScore k34TeamScore2 = new K34TeamScore("Robert", 21095, duration2, "Wrocław");
     private K34TeamScore k34TeamScore3 = new K34TeamScore("Piotrek", 70000, duration3, "Zakopane");
     private K34TeamScore k34TeamScore4 = new K34TeamScore("Daniel", 42195, duration4, "Kraków");
-    private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", 108000, duration4, "Cisna");
+    private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", 108000, duration5, "Cisna");
     private K34TeamScore[] k34TeamScores = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5};
 
     @Test
@@ -26,4 +26,18 @@ class StreamsExampleTest {
         assertEquals(2, streamsExample.numberOfMarathoners());
     }
 
+    @Test
+    void arrayOfMarathoners() {
+        StreamsExample streamsExample = new StreamsExample(k34TeamScores);
+        assertEquals(2, streamsExample.arrayOfMarathoners().length);
+    }
+
+    @Test
+    void arrayOfSetDistanceRunners() {
+        StreamsExample streamsExample = new StreamsExample(k34TeamScores);
+        assertEquals(1, streamsExample.arrayOfSetDistanceRunners(streamsExample.runHalfMarathon).length);
+        assertEquals(2, streamsExample.arrayOfSetDistanceRunners(streamsExample.runUltraMarathon).length);
+        assertEquals(2, streamsExample.arrayOfSetDistanceRunners(streamsExample.runMarathon).length);
+        assertEquals(0, streamsExample.arrayOfSetDistanceRunners(streamsExample.run10Km).length);
+    }
 }

@@ -6,7 +6,6 @@ import java.time.Duration;
 public class K34TeamScore implements Serializable {
     private String name;
     private int distance;
-    //    private Time time;
     private Duration duration;
     private String competitionCity;
 

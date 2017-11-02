@@ -19,7 +19,7 @@ class StreamsExampleTest {
     private K34TeamScore k34TeamScore3 = new K34TeamScore("Piotrek", 70000, duration3, "Zakopane");
     private K34TeamScore k34TeamScore4 = new K34TeamScore("Daniel", 42195, duration4, "Kraków");
     private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", 108000, duration5, "Cisna");
-    private K34TeamScore k34TeamScore6 = new K34TeamScore("Robert", 42195, duration6, "Berlin");
+    private K34TeamScore k34TeamScore6 = new K34TeamScore("Robert", 42195, duration6, "NY");
     private K34TeamScore[] k34TeamScores = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
 
     @Test

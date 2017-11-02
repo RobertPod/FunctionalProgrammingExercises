@@ -16,18 +16,6 @@ class TeamMembersResultsTest {
     private K34TeamScore k34TeamScore3 = new K34TeamScore("Piotrek", 70000, duration3, "Zakopane");
     private K34TeamScore[] k34TeamScores = {k34TeamScore1, k34TeamScore2, k34TeamScore3};
 
-//    @BeforeAll
-//    void pripareData(){
-//        if (K34TeamScores == null){
-//
-//        }
-//    }
-
-//    @BeforeEach
-//    void pripareData(){
-//        if (K34TeamScores == null)
-//    }
-
     @Test
     void didHeMarathonNonFuncjonal() {
         TeamMembersResults teamMembersResults = new TeamMembersResults(k34TeamScores);

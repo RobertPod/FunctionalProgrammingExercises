@@ -17,19 +17,19 @@ public class StreamsExample {
         this.k34TeamScores = k34TeamScores;
     }
 
-    Predicate<K34TeamScore> runUltraMarathon = (k34TeamScore) -> {
+    public static Predicate<K34TeamScore> runUltraMarathon = (k34TeamScore) -> {
         return k34TeamScore.getDistance() > 42195;
     };
 
-    public Predicate<K34TeamScore> runMarathon = (k34TeamScore) -> {
+    public static Predicate<K34TeamScore> runMarathon = (k34TeamScore) -> {
         return k34TeamScore.getDistance() == 42195;
     };
 
-    Predicate<K34TeamScore> runHalfMarathon = (k34TeamScore) -> {
+    public static Predicate<K34TeamScore> runHalfMarathon = (k34TeamScore) -> {
         return k34TeamScore.getDistance() == 21095;
     };
 
-    Predicate<K34TeamScore> run10Km = (k34TeamScore) -> {
+    public static Predicate<K34TeamScore> run10Km = (k34TeamScore) -> {
         return k34TeamScore.getDistance() == 10000;
     };
 
@@ -37,24 +37,30 @@ public class StreamsExample {
     public long numberOfMarathoners() {
         return Arrays.stream(k34TeamScores)
                 .filter(k34TeamScore -> k34TeamScore.getDistance() == 42195)
+                .map(k34TeamScore -> k34TeamScore.getName())
+                .distinct()
                 .count();
     }
 
-    public K34TeamScore[] arrayOfMarathoners() {
-        List<K34TeamScore> k34TeamScoresMarathonersList = Arrays.stream(k34TeamScores)
+    public K34TeamScore[] arrayOfMarathons() {
+        List<K34TeamScore> k34TeamScoresMarathonsList = Arrays.stream(k34TeamScores)
                 .filter(k34TeamScore -> k34TeamScore.getDistance() == 42195)
                 .collect(Collectors.<K34TeamScore>toList());
-        K34TeamScore[] k34TeamScoresMarathoners = k34TeamScoresMarathonersList.toArray(new K34TeamScore[0]);
-        return k34TeamScoresMarathoners;
+        K34TeamScore[] k34TeamScoresMarathons = k34TeamScoresMarathonsList.toArray(new K34TeamScore[0]);
+        return k34TeamScoresMarathons;
     }
 
-    public K34TeamScore[] arrayOfSetDistanceRunners(Predicate<K34TeamScore> condition) {
-        List<K34TeamScore> k34TeamScoresMarathonersList = Arrays.stream(k34TeamScores)
+    public K34TeamScore[] arrayOfSetDistanceRuns(Predicate<K34TeamScore> condition) {
+        List<K34TeamScore> k34TeamScoresRunsList = Arrays.stream(k34TeamScores)
                 .filter(condition)
                 .collect(Collectors.toList());
-        K34TeamScore[] k34TeamScoresMarathoners = k34TeamScoresMarathonersList.toArray(new K34TeamScore[0]);
-        return k34TeamScoresMarathoners;
+        K34TeamScore[] k34TeamScoresRuns = k34TeamScoresRunsList.toArray(new K34TeamScore[0]);
+        return k34TeamScoresRuns;
     }
 
-
+    public int K34TeamTotalDistance() {
+        return Arrays.stream(k34TeamScores)
+                .map(k34TeamScore -> k34TeamScore.getDistance())
+                .reduce(0, (x, y) -> x + y);
+    }
 }

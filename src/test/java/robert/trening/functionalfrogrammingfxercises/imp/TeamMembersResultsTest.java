@@ -45,27 +45,27 @@ class TeamMembersResultsTest {
     }
 
     @Test
-    void didHeInsertFunctionMarathon() {
+    void DidHeInsertDistanceFunctionMarathon() {
         TeamMembersResults teamMembersResults = new TeamMembersResults(k34TeamScores);
-        assertTrue(teamMembersResults.DidHeInsertFunction("Robert", teamMembersResults.runMarathon));
-        assertTrue(!teamMembersResults.DidHeInsertFunction("Piotrek", teamMembersResults.runMarathon));
-        assertTrue(!teamMembersResults.DidHeInsertFunction("Marek", teamMembersResults.runMarathon));
+        assertTrue(teamMembersResults.DidHeInsertDistanceFunction("Robert", TeamMembersResults.runMarathon));
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Piotrek", TeamMembersResults.runMarathon));
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Marek", TeamMembersResults.runMarathon));
     }
 
     @Test
-    void didHeInsertFunctionHalfMarathon() {
+    void DidHeInsertDistanceFunctionHalfMarathon() {
         TeamMembersResults teamMembersResults = new TeamMembersResults(k34TeamScores);
-        assertTrue(teamMembersResults.DidHeInsertFunction("Robert", teamMembersResults.runHalfMarathon));
-        assertTrue(!teamMembersResults.DidHeInsertFunction("Piotrek", teamMembersResults.runHalfMarathon));
-        assertTrue(!teamMembersResults.DidHeInsertFunction("Marek", teamMembersResults.runHalfMarathon));
+        assertTrue(teamMembersResults.DidHeInsertDistanceFunction("Robert", TeamMembersResults.runHalfMarathon));
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Piotrek", TeamMembersResults.runHalfMarathon));
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Marek", TeamMembersResults.runHalfMarathon));
 
     }
 
     @Test
-    void didHeInsertFunctionUltraMarathon() {
+    void DidHeInsertDistanceFunctionUltraMarathon() {
         TeamMembersResults teamMembersResults = new TeamMembersResults(k34TeamScores);
-        assertTrue(!teamMembersResults.DidHeInsertFunction("Robert", teamMembersResults.runUltraMarathon));
-        assertTrue(teamMembersResults.DidHeInsertFunction("Piotrek", teamMembersResults.runUltraMarathon));
-        assertTrue(!teamMembersResults.DidHeInsertFunction("Marek", teamMembersResults.runUltraMarathon));
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Robert", TeamMembersResults.runUltraMarathon));
+        assertTrue(teamMembersResults.DidHeInsertDistanceFunction("Piotrek", TeamMembersResults.runUltraMarathon));
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Marek", TeamMembersResults.runUltraMarathon));
     }
 }

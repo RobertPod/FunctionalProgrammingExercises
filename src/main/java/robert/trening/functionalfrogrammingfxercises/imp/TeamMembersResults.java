@@ -25,17 +25,17 @@ public class TeamMembersResults {
         return false;
     }
 
-    BiPredicate<String, K34TeamScore> runMarathon = (name, k34TeamScore) -> {
+    public static BiPredicate<String, K34TeamScore> runMarathon = (name, k34TeamScore) -> {
         return k34TeamScore.getDistance() == 42195
                 && name.equals(k34TeamScore.getName());
     };
 
-    BiPredicate<String, K34TeamScore> runHalfMarathon = (name, k34TeamScore) -> {
+    public static BiPredicate<String, K34TeamScore> runHalfMarathon = (name, k34TeamScore) -> {
         return k34TeamScore.getDistance() == 21095
                 && name.equals(k34TeamScore.getName());
     };
 
-    BiPredicate<String, K34TeamScore> runUltraMarathon = (name, k34TeamScore) -> {
+    public static BiPredicate<String, K34TeamScore> runUltraMarathon = (name, k34TeamScore) -> {
         return k34TeamScore.getDistance() > 42195
                 && name.equals(k34TeamScore.getName());
     };
@@ -49,7 +49,7 @@ public class TeamMembersResults {
         return false;
     }
 
-    public boolean DidHeInsertFunction(String name, BiPredicate condition) {
+    public boolean DidHeInsertDistanceFunction(String name, BiPredicate condition) {
         for (K34TeamScore k34TeamScore : k34TeamScores) {
             if (condition.test(name, k34TeamScore)) {
                 return true;
@@ -57,16 +57,4 @@ public class TeamMembersResults {
         }
         return false;
     }
-
-//    public boolean DidHeMarathonBetterFuncjonal(String name) {
-//        return this.DidHeInsertFunction(name, runMarathon);
-//    }
-//
-//    public boolean DidHeHalfMarathonBetterFuncjonal(String name) {
-//        return this.DidHeInsertFunction(name, runHalfMarathon);
-//    }
-//
-//    public boolean DidHeUltraMarathonBetterFuncjonal(String name) {
-//        return this.DidHeInsertFunction(name, runUltraMarathon);
-//    }
 }

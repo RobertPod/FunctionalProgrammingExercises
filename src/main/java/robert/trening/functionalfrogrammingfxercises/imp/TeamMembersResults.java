@@ -3,7 +3,6 @@ package robert.trening.functionalfrogrammingfxercises.imp;
 import robert.trening.functionalfrogrammingfxercises.model.K34TeamScore;
 
 import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
 public class TeamMembersResults {
     K34TeamScore[] k34TeamScores;

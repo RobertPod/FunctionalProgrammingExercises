@@ -7,6 +7,8 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.function.BiPredicate;
+
 class TeamMembersResultsTest {
     private Duration duration1 = Duration.ofSeconds(3 * 60 * 60 + 44 * 60 + 8);
     private Duration duration2 = Duration.ofSeconds(1 * 60 * 60 + 37 * 60 + 17);
@@ -54,6 +56,18 @@ class TeamMembersResultsTest {
         TeamMembersResults teamMembersResults = new TeamMembersResults(k34TeamScores);
         assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Robert", TeamMembersResults.runUltraMarathon));
         assertTrue(teamMembersResults.DidHeInsertDistanceFunction("Piotrek", TeamMembersResults.runUltraMarathon));
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Marek", TeamMembersResults.runUltraMarathon));
+    }
+
+    @Test
+    void DidHeInsertDistanceFunction70km() {
+        TeamMembersResults teamMembersResults = new TeamMembersResults(k34TeamScores);
+        assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Robert", ((name, k34TeamScore)
+                -> k34TeamScore.getDistance() == 70000 && name.equals(k34TeamScore.getName()
+        ))));
+
+        assertTrue(teamMembersResults.DidHeInsertDistanceFunction("Piotrek", TeamMembersResults.runUltraMarathon));
+
         assertTrue(!teamMembersResults.DidHeInsertDistanceFunction("Marek", TeamMembersResults.runUltraMarathon));
     }
 }

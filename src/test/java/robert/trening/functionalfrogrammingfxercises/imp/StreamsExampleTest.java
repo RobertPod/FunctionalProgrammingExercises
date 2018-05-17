@@ -8,18 +8,20 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StreamsExampleTest {
-    private Duration duration1 = Duration.ofSeconds(3 * 60 * 60 + 44 * 60 + 8);
-    private Duration duration2 = Duration.ofSeconds(1 * 60 * 60 + 37 * 60 + 17);
-    private Duration duration3 = Duration.ofSeconds(11 * 60 * 60 + 7 * 60 + 27);
-    private Duration duration4 = Duration.ofSeconds(3 * 60 * 60 + 58 * 60 + 38);
-    private Duration duration5 = Duration.ofSeconds(11 * 60 * 60 + 51 * 60 + 21);
-    private Duration duration6 = Duration.ofSeconds(3 * 60 * 60 + 59 * 60 + 57);
+    private int duration1 = 3 * 60 * 60 + 44 * 60 + 8;
+    private int duration2 = 1 * 60 * 60 + 37 * 60 + 17;
+    private int duration3 = 11 * 60 * 60 + 7 * 60 + 27;
+    private int duration4 = 3 * 60 * 60 + 58 * 60 + 38;
+    private int duration5 = 11 * 60 * 60 + 51 * 60 + 21;
+    private int duration6 = 3 * 60 * 60 + 59 * 60 + 57;
+
     private K34TeamScore k34TeamScore1 = new K34TeamScore("Robert", 42195, duration1, "Berlin");
     private K34TeamScore k34TeamScore2 = new K34TeamScore("Robert", 21095, duration2, "Wrocław");
     private K34TeamScore k34TeamScore3 = new K34TeamScore("Piotrek", 70000, duration3, "Zakopane");
     private K34TeamScore k34TeamScore4 = new K34TeamScore("Daniel", 42195, duration4, "Kraków");
     private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", 108000, duration5, "Cisna");
     private K34TeamScore k34TeamScore6 = new K34TeamScore("Robert", 42195, duration6, "NY");
+
     private K34TeamScore[] k34TeamScores = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
 
     @Test

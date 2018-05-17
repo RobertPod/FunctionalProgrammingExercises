@@ -12,7 +12,7 @@ public class ComparatorLambda {
 //            }
 //        };
 
-        Comparator<String> compLambda = (String s1, String s2) ->
+        Comparator<String> compLambda = (s1, s2) ->
                 Integer.compare(s1.length(), s2.length());
 
 

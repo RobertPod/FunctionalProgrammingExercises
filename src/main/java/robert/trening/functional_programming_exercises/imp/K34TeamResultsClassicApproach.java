@@ -1,18 +1,43 @@
-package robert.trening.functionalfrogrammingfxercises.imp;
+package robert.trening.functional_programming_exercises.imp;
 
-import robert.trening.functionalfrogrammingfxercises.model.K34TeamScore;
+import robert.trening.functional_programming_exercises.model.K34TeamScore;
 
+import java.util.*;
 import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class TeamMembersResults {
+public class K34TeamResultsClassicApproach {
     K34TeamScore[] k34TeamScores;
 
-    public TeamMembersResults() {
+    public K34TeamResultsClassicApproach(Optional<K34TeamScore[]> k34TeamScores) {
+
+        this.k34TeamScores = k34TeamScores.orElseGet(() -> new K34TeamScore[]{});
     }
 
-    public TeamMembersResults(K34TeamScore[] k34TeamScores) {
-        this.k34TeamScores = k34TeamScores;
+    private K34TeamResultsClassicApproach() {
+
+    }
+
+    public Optional<K34TeamScore[]> runnersWhoRanTheDistanceAndBestScore(int distance) {
+        List<K34TeamScore> resultList = new ArrayList<>();
+        Set<String> resultSet = new HashSet<>();
+        for (var k34TeamScore : k34TeamScores) {
+            if (k34TeamScore.getDistance() == distance) {
+                if (resultSet.add(k34TeamScore.getName())) {
+                    resultList.add(k34TeamScore);
+                } else {
+                    for (var k34TeamScoreElem : resultList) {
+                        if (k34TeamScoreElem.getName().equals(k34TeamScore.getName())
+                                && k34TeamScoreElem.getDuration() > k34TeamScore.getDuration()) {
+                            resultList.remove(k34TeamScoreElem);
+                            resultList.add(k34TeamScore);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        var returnTable = new K34TeamScore[resultList.size()];
+        return Optional.ofNullable(resultList.toArray(returnTable));
     }
 
     public boolean DidHeMarathonNonFuncjonal(String name) {

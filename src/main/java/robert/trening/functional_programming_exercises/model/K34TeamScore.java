@@ -1,7 +1,6 @@
-package robert.trening.functionalfrogrammingfxercises.model;
+package robert.trening.functional_programming_exercises.model;
 
 import java.io.Serializable;
-import java.time.Duration;
 
 public class K34TeamScore implements Serializable {
     private String name;
@@ -15,6 +14,10 @@ public class K34TeamScore implements Serializable {
         this.distance = distance;
         this.duration = duration;
         this.competitionCity = competitionCity;
+    }
+
+    public K34TeamScore() {
+
     }
 
     public String getName() {

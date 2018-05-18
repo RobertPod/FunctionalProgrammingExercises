@@ -1,9 +1,7 @@
-package robert.trening.functionalfrogrammingfxercises.imp;
+package robert.trening.functional_programming_exercises.imp;
 
 import org.junit.jupiter.api.Test;
-import robert.trening.functionalfrogrammingfxercises.model.K34TeamScore;
-
-import java.time.Duration;
+import robert.trening.functional_programming_exercises.model.K34TeamScore;
 
 import static org.junit.jupiter.api.Assertions.*;
 

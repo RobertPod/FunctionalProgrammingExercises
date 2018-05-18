@@ -1,4 +1,4 @@
-package robert.trening.functionalfrogrammingfxercises.imp;
+package robert.trening.functional_programming_exercises.imp;
 
 import java.util.*;
 

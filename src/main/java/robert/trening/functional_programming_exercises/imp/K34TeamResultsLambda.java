@@ -1,23 +1,24 @@
-package robert.trening.functionalfrogrammingfxercises.imp;
+package robert.trening.functional_programming_exercises.imp;
 
-import robert.trening.functionalfrogrammingfxercises.model.K34TeamScore;
+import robert.trening.functional_programming_exercises.model.K34TeamScore;
 
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BiPredicate;
 
-public class K34TeamResultsClassicApproach {
+public class K34TeamResultsLambda {
     K34TeamScore[] k34TeamScores;
 
-    public K34TeamResultsClassicApproach() {
+    public K34TeamResultsLambda(Optional<K34TeamScore[]> k34TeamScores) {
+
+        this.k34TeamScores = k34TeamScores.orElseGet(() -> new K34TeamScore[]{});
     }
 
-    public K34TeamResultsClassicApproach(K34TeamScore[] k34TeamScores) {
+    private K34TeamResultsLambda() {
 
-        this.k34TeamScores = k34TeamScores;
     }
 
-    public Optional<K34TeamScore[]> howManyMembersRunDistance(int distance) {
-        return null;
+    public Optional<K34TeamScore[]> runnersWhoRanTheDistanceAndBestScore(int distance) {
+        return K34TeamResultsFunctions.runnersWhoRanTheDistanceAndBestScore(k34TeamScores, distance);
     }
 
     public boolean DidHeMarathonNonFuncjonal(String name) {

@@ -1,7 +1,4 @@
-package robert.trening.functionalfrogrammingfxercises.imp;
-
-import java.io.File;
-import java.io.FileFilter;
+package robert.trening.functional_programming_exercises.imp;
 
 public class RunnableLambda {
     public static void main(String[] args) throws InterruptedException {

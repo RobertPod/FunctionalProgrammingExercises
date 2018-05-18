@@ -20,10 +20,8 @@ public class K34TeamResultsFunctions {
 
         List<K34TeamScore> resultList = new ArrayList<>();
 
-        Predicate<K34TeamScore> p = k34TeamScore -> k34TeamScore.getDistance() == distance;
-
         stream
-                .filter(p)
+                .filter(k34 -> k34.getDistance() == distance)
                 .forEach(resultList::add);
 
         var returnTable = new K34TeamScore[resultList.size()];

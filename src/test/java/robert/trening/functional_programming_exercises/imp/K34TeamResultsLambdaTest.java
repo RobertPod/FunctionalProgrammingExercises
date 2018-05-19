@@ -6,6 +6,7 @@ import robert.trening.functional_programming_exercises.model.K34TeamScore;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class K34TeamResultsLambdaTest {
     private int duration1 = 3 * 60 * 60 + 44 * 60 + 8;
@@ -25,7 +26,8 @@ class K34TeamResultsLambdaTest {
     private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", 108000, duration5, "Cisna");
     private K34TeamScore k34TeamScore6 = new K34TeamScore("Robert", marathon_distance, duration6, "NY");
 
-    private K34TeamScore[] k34TeamScores = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
+//    private K34TeamScore[] k34TeamScores = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
+    private K34TeamScore[] k34TeamScores = {k34TeamScore4, k34TeamScore6, k34TeamScore2, k34TeamScore3, k34TeamScore5, k34TeamScore1};
 
     @Test
     void runnersWhoRanTheDistanceTest() {
@@ -35,6 +37,7 @@ class K34TeamResultsLambdaTest {
         var marathon_distance = 42195;
         var BUGT_distance = 70000;
         var K10_distance = 10000;
+        var duration = 3 * 60 * 60 + 44 * 60 + 8;
         // Then
         assertEquals(2, (k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})).length);
@@ -42,6 +45,11 @@ class K34TeamResultsLambdaTest {
                 .orElseGet(() -> new K34TeamScore[]{})).length);
         assertEquals(1, (k34.runnersWhoRanTheDistanceAndBestScore(BUGT_distance)
                 .orElseGet(() -> new K34TeamScore[]{})).length);
+
+        assertTrue("Daniel".equals((k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))[0].getName()));
+        assertEquals(duration, (k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))[1].getDuration());
     }
 
     @Test

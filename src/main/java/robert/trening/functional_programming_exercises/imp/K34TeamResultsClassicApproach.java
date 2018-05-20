@@ -1,5 +1,6 @@
 package robert.trening.functional_programming_exercises.imp;
 
+import robert.trening.functional_programming_exercises.model.CompareTeamMemberName;
 import robert.trening.functional_programming_exercises.model.K34TeamScore;
 
 import java.util.*;
@@ -36,8 +37,12 @@ public class K34TeamResultsClassicApproach {
                 }
             }
         }
+
         var returnTable = new K34TeamScore[resultList.size()];
-        return Optional.ofNullable(resultList.toArray(returnTable));
+        CompareTeamMemberName comp = new CompareTeamMemberName();
+        var resultArrays = resultList.toArray(returnTable);
+        Arrays.sort(resultArrays, comp);
+        return Optional.ofNullable(resultArrays);
     }
 
     public boolean DidHeMarathonNonFuncjonal(String name) {

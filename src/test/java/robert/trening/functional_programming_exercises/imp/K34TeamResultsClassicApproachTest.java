@@ -26,44 +26,68 @@ class K34TeamResultsClassicApproachTest {
     private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", 108000, duration5, "Cisna");
     private K34TeamScore k34TeamScore6 = new K34TeamScore("Robert", marathon_distance, duration6, "NY");
 
-    private K34TeamScore[] k34TeamScores = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
-//    private K34TeamScore[] k34TeamScores = {k34TeamScore4, k34TeamScore6, k34TeamScore2, k34TeamScore3, k34TeamScore5, k34TeamScore1};
+    private K34TeamScore[] k34TeamScores1 = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
+    private K34TeamScore[] k34TeamScores2 = {k34TeamScore4, k34TeamScore6, k34TeamScore2, k34TeamScore3, k34TeamScore5, k34TeamScore1};
 
     @Test
     void runnersWhoRanTheDistanceTest() {
         // Given
-        var k34 = new K34TeamResultsClassicApproach(Optional.ofNullable(k34TeamScores));
+        var k34_1 = new K34TeamResultsClassicApproach(Optional.ofNullable(k34TeamScores1));
+        var k34_2 = new K34TeamResultsClassicApproach(Optional.ofNullable(k34TeamScores2));
+
         // When
         var marathon_distance = 42195;
         var BUGT_distance = 70000;
         var K10_distance = 10000;
         var duration = 3 * 60 * 60 + 44 * 60 + 8;
+
         // Then
-        assertEquals(2, (k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{})).length);
-        assertEquals(0, (k34.runnersWhoRanTheDistanceAndBestScore(K10_distance)
-                .orElseGet(() -> new K34TeamScore[]{})).length);
-        assertEquals(1, (k34.runnersWhoRanTheDistanceAndBestScore(BUGT_distance)
-                .orElseGet(() -> new K34TeamScore[]{})).length);
+        assertEquals(2, (k34_1.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))
+                .length);
+
+        assertEquals(2, (k34_2.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))
+                .length);
+
+        assertEquals(0, (k34_1.runnersWhoRanTheDistanceAndBestScore(K10_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))
+                .length);
+
+        assertEquals(1, (k34_1.runnersWhoRanTheDistanceAndBestScore(BUGT_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))
+                .length);
 
 
-        assertTrue("Daniel".equals((k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{}))[0].getName()));
-        assertEquals(duration, (k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{}))[1].getDuration());
+        assertTrue("Daniel".equals((k34_1.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))[0]
+                .getName()));
+
+        assertTrue("Daniel".equals((k34_2.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))[0]
+                .getName()));
+
+        assertEquals(duration, (k34_1.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))[1]
+                .getDuration());
+
+        assertEquals(duration, (k34_2.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))[1]
+                .getDuration());
     }
 
     @Test
     void runnersWhoRanTheDistanceTest_NullInput() {
         // Given
         var k34 = new K34TeamResultsClassicApproach(Optional.ofNullable(null));
+
         // When
         var marathon_distance = 42195;
-        var BUGT_distance = 70000;
-        var K10_distance = 10000;
+
         // Then
         assertEquals(0, (k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{})).length);
+                .orElseGet(() -> new K34TeamScore[]{}))
+                .length);
     }
 
 }

@@ -30,10 +30,6 @@ class K34TeamResultsLambdaTest {
     private K34TeamScore[] k34TeamScores1 = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
     private K34TeamScore[] k34TeamScores2 = {k34TeamScore4, k34TeamScore6, k34TeamScore2, k34TeamScore3, k34TeamScore5, k34TeamScore1};
 
-//    public static Optional<K34TeamScore[]> runnersWhoRanTheDistanceAndBestScore(Optional<K34TeamScore[]>, int distance){
-//        return Bi
-//    }
-
     @Test
     void runnersWhoRanTheDistanceTest() {
         // Given
@@ -66,16 +62,20 @@ class K34TeamResultsLambdaTest {
 
 
         assertTrue("Daniel".equals(fn.apply(Optional.ofNullable(k34TeamScores1), marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{})[0].getName()));
+                .orElseGet(() -> new K34TeamScore[]{})[0]
+                .getName()));
 
         assertTrue("Daniel".equals(fn.apply(Optional.ofNullable(k34TeamScores2), marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{})[0].getName()));
+                .orElseGet(() -> new K34TeamScore[]{})[0]
+                .getName()));
 
         assertEquals(duration, fn.apply(Optional.ofNullable(k34TeamScores1), marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{})[1].getDuration());
+                .orElseGet(() -> new K34TeamScore[]{})[1]
+                .getDuration());
 
         assertEquals(duration, fn.apply(Optional.ofNullable(k34TeamScores2), marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{})[1].getDuration());
+                .orElseGet(() -> new K34TeamScore[]{})[1]
+                .getDuration());
     }
 
     @Test

@@ -8,6 +8,7 @@ import java.util.function.BiFunction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static robert.trening.functional_programming_exercises.imp.K34TeamResultsFunctions.runnersWhoRanTheDistanceAndBestScore;
 
 class K34TeamResultsLambdaTest {
     private int duration1 = 3 * 60 * 60 + 44 * 60 + 8;
@@ -33,10 +34,9 @@ class K34TeamResultsLambdaTest {
     @Test
     void runnersWhoRanTheDistanceTest() {
         // Given
-        BiFunction<Optional<K34TeamScore[]>, Integer, Optional<K34TeamScore[]>> fn =
-                (k34TeamScores, distance) ->
-                        K34TeamResultsFunctions.runnersWhoRanTheDistanceAndBestScore
-                                (k34TeamScores.orElseGet(() -> new K34TeamScore[]{}), distance);
+        // * k34TeamScores1
+        // * k34TeamScores2
+        // * fnByMethod
 
         // When
         var marathon_distance = 42195;
@@ -45,35 +45,35 @@ class K34TeamResultsLambdaTest {
         var duration = 3 * 60 * 60 + 44 * 60 + 8;
 
         // Then
-        assertEquals(2, fn.apply(Optional.ofNullable(k34TeamScores1), marathon_distance)
+        assertEquals(2, fnByMethod(Optional.ofNullable(k34TeamScores1), marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})
                 .length);
-        assertEquals(2, fn.apply(Optional.ofNullable(k34TeamScores2), marathon_distance)
-                .orElseGet(() -> new K34TeamScore[]{})
-                .length);
-
-        assertEquals(0, fn.apply(Optional.ofNullable(k34TeamScores1), K10_distance)
+        assertEquals(2, fnByMethod(Optional.ofNullable(k34TeamScores2), marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})
                 .length);
 
-        assertEquals(1, fn.apply(Optional.ofNullable(k34TeamScores1), BUGT_distance)
+        assertEquals(0, fnByMethod(Optional.ofNullable(k34TeamScores1), K10_distance)
+                .orElseGet(() -> new K34TeamScore[]{})
+                .length);
+
+        assertEquals(1, fnByMethod(Optional.ofNullable(k34TeamScores1), BUGT_distance)
                 .orElseGet(() -> new K34TeamScore[]{})
                 .length);
 
 
-        assertTrue("Daniel".equals(fn.apply(Optional.ofNullable(k34TeamScores1), marathon_distance)
+        assertTrue("Daniel".equals(fnByMethod(Optional.ofNullable(k34TeamScores1), marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})[0]
                 .getName()));
 
-        assertTrue("Daniel".equals(fn.apply(Optional.ofNullable(k34TeamScores2), marathon_distance)
+        assertTrue("Daniel".equals(fnByMethod(Optional.ofNullable(k34TeamScores2), marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})[0]
                 .getName()));
 
-        assertEquals(duration, fn.apply(Optional.ofNullable(k34TeamScores1), marathon_distance)
+        assertEquals(duration, fnByMethod(Optional.ofNullable(k34TeamScores1), marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})[1]
                 .getDuration());
 
-        assertEquals(duration, fn.apply(Optional.ofNullable(k34TeamScores2), marathon_distance)
+        assertEquals(duration, fnByMethod(Optional.ofNullable(k34TeamScores2), marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})[1]
                 .getDuration());
     }
@@ -83,7 +83,7 @@ class K34TeamResultsLambdaTest {
         // Given
         BiFunction<Optional<K34TeamScore[]>, Integer, Optional<K34TeamScore[]>> fn =
                 (k34TeamScores, distance) ->
-                        K34TeamResultsFunctions.runnersWhoRanTheDistanceAndBestScore
+                        runnersWhoRanTheDistanceAndBestScore
                                 (k34TeamScores.orElseGet(() -> new K34TeamScore[]{}), distance);
 
         // When
@@ -93,5 +93,13 @@ class K34TeamResultsLambdaTest {
         assertEquals(0, fn.apply(Optional.ofNullable(null), marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{})
                 .length);
+    }
+
+    private static Optional<K34TeamScore[]> fnByMethod(Optional<K34TeamScore[]> k34, int distance) {
+        BiFunction<Optional<K34TeamScore[]>, Integer, Optional<K34TeamScore[]>> fn =
+                (k34TeamScores, competitionDistance) ->
+                        runnersWhoRanTheDistanceAndBestScore
+                                (k34TeamScores.orElseGet(() -> new K34TeamScore[]{}), competitionDistance);
+        return fn.apply(k34, distance);
     }
 }

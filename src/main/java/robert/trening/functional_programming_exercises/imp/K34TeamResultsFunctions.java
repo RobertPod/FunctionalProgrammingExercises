@@ -2,8 +2,8 @@ package robert.trening.functional_programming_exercises.imp;
 
 import robert.trening.functional_programming_exercises.model.K34TeamScore;
 
-import java.util.*;
-import java.util.function.Predicate;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

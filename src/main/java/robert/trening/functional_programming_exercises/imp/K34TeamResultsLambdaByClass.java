@@ -2,8 +2,7 @@ package robert.trening.functional_programming_exercises.imp;
 
 import robert.trening.functional_programming_exercises.model.K34TeamScore;
 
-import java.util.*;
-import java.util.function.BiPredicate;
+import java.util.Optional;
 
 public class K34TeamResultsLambdaByClass {
     K34TeamScore[] k34TeamScores;

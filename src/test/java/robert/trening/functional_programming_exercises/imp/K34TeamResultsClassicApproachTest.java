@@ -42,35 +42,44 @@ class K34TeamResultsClassicApproachTest {
         var duration = 3 * 60 * 60 + 44 * 60 + 8;
 
         // Then
+        // #1 How many competitors have completed the marathon?
         assertEquals(2, (k34_1.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))
                 .length);
 
+        // #2 How many competitors have completed the marathon? - input data in a different order
         assertEquals(2, (k34_2.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))
                 .length);
 
+        // #3 How many competitors have completed the 10K?
         assertEquals(0, (k34_1.runnersWhoRanTheDistanceAndBestScore(K10_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))
                 .length);
 
+        // #4 How many competitors have completed the BUGT competition?
         assertEquals(1, (k34_1.runnersWhoRanTheDistanceAndBestScore(BUGT_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))
                 .length);
 
 
+        // #5 Is the result sorted by player's name?
         assertTrue("Daniel".equals((k34_1.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))[0]
                 .getName()));
 
+        // #6 Is the result sorted by player's name? - input data in a different order
         assertTrue("Daniel".equals((k34_2.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))[0]
                 .getName()));
 
+        // #7 Was the best result chosen if the competitor repeatedly finished the marathon?
         assertEquals(duration, (k34_1.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))[1]
                 .getDuration());
 
+        // #8 Was the best result chosen if the competitor repeatedly finished the marathon?
+        //     - input data in a different order
         assertEquals(duration, (k34_2.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
                 .orElseGet(() -> new K34TeamScore[]{}))[1]
                 .getDuration());
@@ -90,4 +99,37 @@ class K34TeamResultsClassicApproachTest {
                 .length);
     }
 
+    @Test
+    void runnersWhoRanTheDistanceTest_EmptyInputData() {
+        // Given
+        K34TeamScore[] k34TeamScores = {new K34TeamScore(null, 0, 0, null)};
+
+        var k34 = new K34TeamResultsClassicApproach(Optional.ofNullable(k34TeamScores));
+
+        // When
+        var marathon_distance = 42195;
+
+        // Then
+        assertEquals(0, (k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))
+                .length);
+    }
+
+    @Test
+    void runnersWhoRanTheDistanceTest_NameEqNull() {
+        // Given
+        K34TeamScore[] k34TeamScores = {new K34TeamScore(null, marathon_distance, 100, "NYC"),
+                new K34TeamScore(null, marathon_distance, 1000, "Wroclaw")
+        };
+
+        var k34 = new K34TeamResultsClassicApproach(Optional.ofNullable(k34TeamScores));
+
+        // When
+        var marathon_distance = 42195;
+
+        // Then
+        assertEquals(1, (k34.runnersWhoRanTheDistanceAndBestScore(marathon_distance)
+                .orElseGet(() -> new K34TeamScore[]{}))
+                .length);
+    }
 }

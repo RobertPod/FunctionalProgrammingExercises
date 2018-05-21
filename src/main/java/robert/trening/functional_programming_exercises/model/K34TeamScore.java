@@ -6,18 +6,16 @@ public class K34TeamScore implements Serializable {
     private String name;
     private int distance;
     private int duration;
-    //    private Duration duration;
     private String competitionCity;
 
     public K34TeamScore(String name, int distance, int duration, String competitionCity) {
-        this.name = name;
+        this.name = name == null ? "" : name;
         this.distance = distance;
         this.duration = duration;
         this.competitionCity = competitionCity;
     }
 
-    public K34TeamScore() {
-
+    private K34TeamScore() {
     }
 
     public String getName() {
@@ -25,7 +23,7 @@ public class K34TeamScore implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? "" : name;
     }
 
     public int getDistance() {
@@ -61,13 +59,13 @@ public class K34TeamScore implements Serializable {
 
         if (distance != that.distance) return false;
         if (duration != that.duration) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (!name.equals(that.name)) return false;
         return competitionCity != null ? competitionCity.equals(that.competitionCity) : that.competitionCity == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = name.hashCode();
         result = 31 * result + distance;
         result = 31 * result + duration;
         result = 31 * result + (competitionCity != null ? competitionCity.hashCode() : 0);

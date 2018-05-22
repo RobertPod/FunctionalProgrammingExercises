@@ -16,15 +16,17 @@ class K34TeamResultsClassicApproachTest {
     private int duration5 = 11 * 60 * 60 + 51 * 60 + 21;
     private int duration6 = 3 * 60 * 60 + 59 * 60 + 57;
 
-    private int marathon_distance = 42195;
-    private int BUGT_distance = 70000;
+    private int marathon_dist = 42195;
+    private int BUGT_distanc = 70000;
+    private int BRzeznikaU_di = 108000;
+    private int half_marathon = 21095;
 
-    private K34TeamScore k34TeamScore1 = new K34TeamScore("Robert", marathon_distance, duration1, "Berlin");
-    private K34TeamScore k34TeamScore2 = new K34TeamScore("Robert", 21095, duration2, "Wrocław");
-    private K34TeamScore k34TeamScore3 = new K34TeamScore("Piotrek", BUGT_distance, duration3, "Zakopane");
-    private K34TeamScore k34TeamScore4 = new K34TeamScore("Daniel", marathon_distance, duration4, "Kraków");
-    private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", 108000, duration5, "Cisna");
-    private K34TeamScore k34TeamScore6 = new K34TeamScore("Robert", marathon_distance, duration6, "NY");
+    private K34TeamScore k34TeamScore1 = new K34TeamScore("Robert", marathon_dist, duration1, "Berlin");
+    private K34TeamScore k34TeamScore2 = new K34TeamScore("Robert", half_marathon, duration2, "Wrocław");
+    private K34TeamScore k34TeamScore3 = new K34TeamScore("Piotrek", BUGT_distanc, duration3, "Zakopane");
+    private K34TeamScore k34TeamScore4 = new K34TeamScore("Daniel", marathon_dist, duration4, "Kraków");
+    private K34TeamScore k34TeamScore5 = new K34TeamScore("Daniel", BRzeznikaU_di, duration5, "Cisna");
+    private K34TeamScore k34TeamScore6 = new K34TeamScore("Robert", marathon_dist, duration6, "NY");
 
     private K34TeamScore[] k34TeamScores1 = {k34TeamScore1, k34TeamScore2, k34TeamScore3, k34TeamScore4, k34TeamScore5, k34TeamScore6};
     private K34TeamScore[] k34TeamScores2 = {k34TeamScore4, k34TeamScore6, k34TeamScore2, k34TeamScore3, k34TeamScore5, k34TeamScore1};
@@ -118,8 +120,8 @@ class K34TeamResultsClassicApproachTest {
     @Test
     void runnersWhoRanTheDistanceTest_NameEqNull() {
         // Given
-        K34TeamScore[] k34TeamScores = {new K34TeamScore(null, marathon_distance, 100, "NYC"),
-                new K34TeamScore(null, marathon_distance, 1000, "Wroclaw")
+        K34TeamScore[] k34TeamScores = {new K34TeamScore(null, marathon_dist, 100, "NYC"),
+                new K34TeamScore(null, marathon_dist, 1000, "Wroclaw")
         };
 
         var k34 = new K34TeamResultsClassicApproach(Optional.ofNullable(k34TeamScores));

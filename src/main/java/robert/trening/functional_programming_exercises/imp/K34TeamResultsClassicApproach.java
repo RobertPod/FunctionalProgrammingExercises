@@ -21,6 +21,7 @@ public class K34TeamResultsClassicApproach {
     public Optional<K34TeamScore[]> runnersWhoRanTheDistanceAndBestScore(int distance) {
         List<K34TeamScore> resultList = new ArrayList<>();
         Set<String> resultSet = new HashSet<>();
+
         for (var k34TeamScore : k34TeamScores) {
             if (k34TeamScore.getDistance() == distance) {
                 if (resultSet.add(k34TeamScore.getName())) {
@@ -39,9 +40,9 @@ public class K34TeamResultsClassicApproach {
         }
 
         var returnTable = new K34TeamScore[resultList.size()];
-        CompareTeamMemberName comp = new CompareTeamMemberName();
-        var resultArrays = resultList.toArray(returnTable);
-        Arrays.sort(resultArrays, comp);
-        return Optional.ofNullable(resultArrays);
+        returnTable = resultList.toArray(returnTable);
+
+        Arrays.sort(returnTable, new CompareTeamMemberName());
+        return Optional.ofNullable(returnTable);
     }
 }

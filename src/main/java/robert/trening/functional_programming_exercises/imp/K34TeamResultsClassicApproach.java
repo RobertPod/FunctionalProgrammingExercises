@@ -3,8 +3,13 @@ package robert.trening.functional_programming_exercises.imp;
 import robert.trening.functional_programming_exercises.model.CompareTeamMemberName;
 import robert.trening.functional_programming_exercises.model.K34TeamScore;
 
-import java.util.*;
-import java.util.function.BiPredicate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
 
 public class K34TeamResultsClassicApproach {
     K34TeamScore[] k34TeamScores;

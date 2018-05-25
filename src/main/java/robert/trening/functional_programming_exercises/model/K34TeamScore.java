@@ -22,32 +22,16 @@ public class K34TeamScore implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? "" : name;
-    }
-
     public int getDistance() {
         return distance;
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
     }
 
     public int getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
     public String getCompetitionCity() {
         return competitionCity;
-    }
-
-    public void setCompetitionCity(String competitionCity) {
-        this.competitionCity = competitionCity;
     }
 
     @Override

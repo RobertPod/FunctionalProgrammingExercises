@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
-import static java.lang.Integer.compare;
+import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
 
 
@@ -24,9 +24,9 @@ public class K34TeamResultsFunctionsImpl implements K34TeamResultsFunction {
         var resultList =
                 Stream.of(k34TeamScores)
                         .filter(k34t -> k34t.getDistance() == distance)
-                        .sorted((k34t, o) -> (k34t.equals(o) ? 0 : compare(k34t.getDuration(), o.getDuration())))
+                        .sorted(comparing(K34TeamScore::getDuration))
                         .filter(k34t -> marathoners.add(k34t.getName()))
-                        .sorted((k34t, o) -> (k34t.getName().compareTo(o.getName())))
+                        .sorted(comparing(K34TeamScore::getName))
                         .collect(toList());
 
         var returnTable = new K34TeamScore[resultList.size()];
